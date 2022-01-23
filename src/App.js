@@ -1,12 +1,12 @@
 import React from 'react'
 import Storelist from './components/Storelist'
 
-const App = () => {
+function App() {
   return (
     <div>
-      <Storelist/>
+      <Storelist />
     </div>
   )
-}  
+}
 
-export default App;
+export default App
