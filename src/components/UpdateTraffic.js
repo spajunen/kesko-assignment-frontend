@@ -47,7 +47,7 @@ function UpdateTraffic({ store, stores, setStores }) {
     <div>
       <UpdateIcon fontSize="large" color="primary" onClick={handleClickOpen} />
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
-        <DialogTitle>Update newTraffic</DialogTitle>
+        <DialogTitle>Update traffic</DialogTitle>
         <DialogContent>
           <Box
             component="form"
