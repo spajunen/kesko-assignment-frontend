@@ -1,6 +1,5 @@
 import axios from 'axios'
-// const baseUrl = 'http://localhost:3001/api/stores'
-const baseUrl = 'https://kesko-assignment-backend.herokuapp.com/api/stores'
+const baseUrl = '/api/stores'
 
 const getAll = async () => {
   try {
