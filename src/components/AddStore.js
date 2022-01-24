@@ -22,21 +22,26 @@ function AddStore({ stores, setStores }) {
   const addStore = (event) => {
     event.preventDefault()
 
-    const storeObject = {
-      name: newStore,
-      traffic: newTraffic,
-      date: new Date().toISOString(),
+    if(newStore !== '' && newTraffic !== ''){
+      const storeObject = {
+        name: newStore,
+        traffic: newTraffic,
+        date: new Date().toISOString(),
+      }
+      storeService
+        .create(storeObject)
+        .then((returnedStore) => {
+          setStores(stores.concat(returnedStore))
+          setNewStore('')
+          setNewTraffic('')
+        })
+        .catch(error => {
+          alert('Creation failed: ' + error.message)
+        })
+      handleClose()
+    }else{
+      alert('Store name or traffic missing!')
     }
-
-    storeService
-      .create(storeObject)
-      .then((returnedStore) => {
-        setStores(stores.concat(returnedStore))
-        setNewStore('')
-        setNewTraffic('')
-      })
-
-    handleClose()
   }
 
   const handleStoreChange = (event) => setNewStore(event.target.value)
@@ -76,17 +81,18 @@ function AddStore({ stores, setStores }) {
             autoComplete="off"
           >
             <TextField
+              required
               id="outlined-basic"
               label="Store name"
               variant="outlined"
               value={newStore}
               onChange={handleStoreChange}
             />
-            <FormControl fullWidth>
+            <FormControl required fullWidth>
               <InputLabel id="demo-simple-select-label">Traffic</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="demo-simple-select-required-label"
+                id="demo-simple-select-required"
                 value={newTraffic}
                 label="Traffic"
                 onChange={handleTrafficChange}

@@ -7,7 +7,7 @@ const getAll = async () => {
 
     return response.data
   } catch (error) {
-    alert('Get stores failed')
+    throw Error('Get stores failed')
   }
 }
 
@@ -17,7 +17,7 @@ const create = async (newObject) => {
 
     return response.data
   } catch (error) {
-    alert('Create store failed')
+    throw Error('Store creation failed')
   }
 }
 
@@ -27,7 +27,7 @@ const update = async (id, newObject) => {
 
     return response.data
   } catch (error) {
-    alert('Traffic update failed')
+    throw Error('Traffic update failed')
   }
 }
 
